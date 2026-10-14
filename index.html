@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="description" content="InNav Environment Editor — a browser-based indoor navigation configuration prototype by Team Pathfinder.">
+  <title>InNav — Environment Editor</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="three-view.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <button id="brand" class="brand" title="Open project dashboard" aria-label="Open project dashboard"><span class="brand-mark">⌁</span><span class="brand-name">InNav <small>ENVIRONMENT EDITOR</small></span></button>
+    <div class="top-divider"></div><div class="breadcrumbs"><span id="crumbProject">Workspace</span><span class="muted">/</span><strong id="crumbBuilding">Projects</strong><span id="editTag" class="mode-tag">EDITOR</span></div>
+    <div class="toolbar-spacer"></div><span id="saveStatus" class="save-status">● Ready</span>
+    <div class="top-divider"></div>
+    <button class="icon-btn" id="undoBtn" title="Undo (Ctrl+Z)" aria-label="Undo">↶</button><button class="icon-btn" id="redoBtn" title="Redo (Ctrl+Y)" aria-label="Redo">↷</button>
+    <button class="btn btn-subtle" id="modelBtn">↥ <span>Import model</span></button><button class="btn btn-subtle" id="saveBtn">▣ <span>Save</span></button>
+    <button class="btn btn-subtle" id="validateBtn">✓ <span>Validate</span></button><button class="btn btn-subtle" id="previewBtn">▷ <span>Preview</span></button>
+    <button class="btn btn-amber" id="exportBtn">⇩ <span>Export JSON</span></button>
+  </header>
+  <div class="shell">
+    <nav class="rail" aria-label="Main navigation"><div class="rail-label">WORKSPACE</div>
+      <button class="rail-item" data-view="dashboard"><span>▦</span> Projects</button>
+      <button class="rail-item" data-view="editor"><span>◈</span> Editor</button>
+      <button class="rail-item" data-view="floors"><span>▤</span> Floors</button>
+      <button class="rail-item" data-view="rooms"><span>▧</span> Rooms</button>
+      <button class="rail-item" data-view="destinations"><span>◎</span> Destinations</button>
+      <button class="rail-item" data-view="graph"><span>⌘</span> Navigation</button>
+      <div class="rail-break"></div><div class="rail-label">REVIEW</div>
+      <button class="rail-item" data-view="validation"><span>☑</span> Validation</button>
+      <button class="rail-item" data-view="preview"><span>➤</span> Runtime preview</button>
+      <div class="rail-bottom">TEAM PATHFINDER<br><span>Prototype / v1.0</span></div>
+    </nav>
+    <main id="main" class="main"></main>
+  </div>
+  <div id="toastRegion" class="toast-region" role="status" aria-live="polite"></div>
+  <div id="modalHost"></div>
+  <input id="jsonFile" type="file" accept=".json,application/json" hidden>
+  <input id="modelFile" type="file" accept=".glb,.gltf,.obj,.fbx,.stl" hidden>
+</div>
+</body>
+</html>
