@@ -144,3 +144,10 @@ Render Static Site uses publish directory `.` and no install or build process. `
 - **Data persistence:** all project data remains local in the browser unless exported; room-picked route endpoints are UI state and don't modify saved building geometry.
 
 For QA, check a tall building (15+ levels), selecting a level in the stack and switching to 3D, picking rooms on two levels, calculating a connected route, changing the level to inspect route segments, and testing an intentionally disconnected graph. The included browser smoke test (`tests/smoke-feedback.py`) uses Playwright and Chromium and tests the client-side UI without a server.
+
+## Floor stack and room picking (October 2026 correction)
+
+- Floor Stack is a dedicated scrollable region with visible scrollbar and Up/Down controls. Click a floor card to open its 2D plan.
+- The toolbar's **Route Preview** button switches to the 2D map even when invoked from Floor Stack or 3D.
+- In Route Preview, click **Pick** next to Start or Destination, then click a room footprint or destination marker on the map. Use the floor selector to pick across floors.
+- Regression test: `python tests/regression.py` (requires Playwright and Chromium). Test at 800×640, 1200×640 and 1536×864.

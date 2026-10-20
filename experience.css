@@ -27,3 +27,18 @@ body[data-page="splash"] .rail,body[data-page="dashboard"] .rail,body[data-page=
 body[data-page="preview"] .canvas-wrap{cursor:crosshair}
 body[data-page="preview"] .room,body[data-page="preview"] .poi{cursor:crosshair}
 @media(max-width:1020px){.hifi-editor .workspace{overflow:hidden;min-height:600px}}
+
+/* Robust floor stack: independent scrollport with explicit controls for short viewports. */
+.hifi-editor .canvas-wrap:has(.stack-shell){display:flex;flex-direction:column;min-height:0!important;overflow:hidden!important}
+.hifi-editor .stack-shell{height:100%;width:100%;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+.hifi-editor .stack-toolbar{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:10px 18px;background:#f1f5f9;border-bottom:1px solid #bccddd;color:#263a50;font-size:12px}
+.hifi-editor .stack-navigation{display:flex;gap:7px}
+.hifi-editor .stack-navigation button{background:#18344f;color:#fff;border:1px solid #47728f;border-radius:5px;padding:7px 12px;font-weight:700;cursor:pointer}
+.hifi-editor .stack-navigation button:hover{background:#086cda}
+.hifi-editor .overview-wrap{flex:1 1 0!important;min-height:0!important;max-height:none!important;height:auto!important;overflow-y:scroll!important;overflow-x:hidden!important;scrollbar-width:auto;scrollbar-color:#6086a6 #dae4ed;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.hifi-editor .overview-wrap::-webkit-scrollbar{width:13px}
+.hifi-editor .overview-wrap::-webkit-scrollbar-track{background:#dae4ed}
+.hifi-editor .overview-wrap::-webkit-scrollbar-thumb{background:#7594b0;border-radius:8px;border:3px solid #dae4ed}
+.hifi-editor .overview-floor{cursor:pointer}
+.hifi-editor .overview-floor:focus-visible{outline:3px solid #0066ff;outline-offset:3px}
+body[data-page=preview] .floor-svg{cursor:crosshair}
