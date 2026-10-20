@@ -134,3 +134,13 @@ node tests/test-experience.js
 ```
 
 Render Static Site uses publish directory `.` and no install or build process. `index.html` loads `styles.css`, `experience.css`, `three-view.js`, `app.js`, and `experience.js` with relative paths; images are in `assets/`. The URL is `https://innav-environment-editor.onrender.com/` once the corresponding commit is deployed.
+
+## October 2026 feedback update
+
+- **Floor stack:** the level list has independent vertical scrolling. Click a floor to select it; the panel no longer clips long buildings.
+- **3D:** only the *selected floor* is rendered, with orbit/pivot and free-fly camera modes intact. Change levels using the floor picker or right-hand floor list. This is a schematic floor extrusion, not a mesh import.
+- **Route preview:** the editor's **Route preview** action opens the route planner directly and, when possible, calculates a real route between default configured destinations. A disconnected graph produces an error instead of a fake success.
+- **Pick endpoints:** in Runtime Preview use a room or destination dropdown, or click **Pick** beside Start/Destination, then click a room or destination marker on the 2D floor plan. Switch floors to pick endpoints on different levels. Room routes attach to the nearest navigation node on that floor within 240 plan units; if no node is nearby, the UI explains how to fix it. Routes use the actual graph and lift/stair links.
+- **Data persistence:** all project data remains local in the browser unless exported; room-picked route endpoints are UI state and don't modify saved building geometry.
+
+For QA, check a tall building (15+ levels), selecting a level in the stack and switching to 3D, picking rooms on two levels, calculating a connected route, changing the level to inspect route segments, and testing an intentionally disconnected graph. The included browser smoke test (`tests/smoke-feedback.py`) uses Playwright and Chromium and tests the client-side UI without a server.
