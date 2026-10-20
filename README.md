@@ -151,3 +151,8 @@ For QA, check a tall building (15+ levels), selecting a level in the stack and s
 - The toolbar's **Route Preview** button switches to the 2D map even when invoked from Floor Stack or 3D.
 - In Route Preview, click **Pick** next to Start or Destination, then click a room footprint or destination marker on the map. Use the floor selector to pick across floors.
 - Regression test: `python tests/regression.py` (requires Playwright and Chromium). Test at 800×640, 1200×640 and 1536×864.
+## Selecting route endpoints directly in 3D
+
+From **Route Preview**, switch the view toggle to **3D**, choose the floor containing your starting room, and press **Pick** beside Start. Click the top surface of a room or its destination marker to assign the endpoint. Change floor (if needed), press **Pick** beside End, and click the destination room or marker. The chosen start is highlighted in teal, and the end in violet. The original dropdowns remain available. Press **Calculate route** to compute a path from the configured navigation graph. Room endpoints use their nearby connected navigation nodes; an unconnected floor cannot produce a successful cross-floor route. Orbit/Pivot and Free Fly camera navigation remain available; in Free Fly use left-click to select, right-drag to look.
+
+**QA:** Verify 2D picking continues working; in 3D test room and POI picking for both endpoints, switching floors between picks, switching between Orbit and Free Fly, and calculating a route. Save / export remains unchanged. This is a static browser editor and all project data remains in the browser until JSON export.
